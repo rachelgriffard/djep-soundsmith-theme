@@ -1,0 +1,872 @@
+@charset "utf-8";
+
+/* ─── Reset & Base ─────────────────────────────────────────────────────────── */
+html { overflow-y: scroll; }
+*, *::before, *::after { box-sizing: border-box; }
+a { text-decoration: none; color: inherit; }
+
+body.djep-body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #1a1a1a;
+  background: #f5f5f4;
+}
+
+/* ─── Page Shell ────────────────────────────────────────────────────────────── */
+#djep-page {
+  width: 963px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+#djep-header {
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* ─── Content Box ───────────────────────────────────────────────────────────── */
+#djep-content,
+#djep-guestrequestcontent,
+.djep-guestrequestcontent {
+  max-width: 800px;
+  width: 800px;
+  margin: 0 auto;
+  padding: 0 16px;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  overflow: hidden;
+  min-height: 370px;
+}
+
+#djep-guestrequestpage {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Sidebar Nav ───────────────────────────────────────────────────────────── */
+#djep-navbar {
+  float: left;
+  width: 141px;
+  position: fixed;
+  margin-left: -72px;
+  padding-bottom: 10px;
+  height: 510px;
+}
+
+ul#djep-navigation {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+}
+
+ul#djep-navigation li {
+  float: left;
+  width: 141px;
+  margin: 6px 0 0;
+  border-radius: 4px 0 0 4px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  position: relative;
+  z-index: 1;
+}
+
+ul#djep-navigation li.selected { z-index: 3; }
+
+ul#djep-navigation li a:link,
+ul#djep-navigation li a:visited {
+  display: block;
+  width: 141px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 4px 0 0 4px;
+  background: #1a1a1a;
+  transition: background 0.15s;
+}
+
+ul#djep-navigation li a:hover { background: #333; }
+
+ul#djep-navigation li.selected a:link,
+ul#djep-navigation li.selected a:visited {
+  background: #fff;
+  color: #1a1a1a;
+}
+
+/* ─── Typography ────────────────────────────────────────────────────────────── */
+h1.djep-h1 { font-size: 28px; font-weight: 600; color: #1a1a1a; margin: 24px 0; }
+h2.djep-h2 { font-size: 20px; font-weight: 500; color: #1a1a1a; margin: 20px 0; }
+h3.djep-h3 { font-size: 16px; font-weight: 500; color: #555; }
+p.djep-p-standard { font-size: 14px; }
+
+/* ─── Title Bars ────────────────────────────────────────────────────────────── */
+.djep-titlebar,
+.djep-titlebarsmall,
+.djep-titlebarsmaller {
+  display: block;
+  background: #fafafa;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
+  padding: 10px 16px;
+  margin: 20px auto;
+}
+
+.djep-titlebar       { width: 96%; }
+.djep-titlebarsmall  { width: 90%; }
+.djep-titlebarsmaller{ width: 80%; }
+
+.djep-titlebarsmallalert {
+  display: block;
+  width: 90%;
+  background: #fef2f2;
+  border-top: 1px solid #fca5a5;
+  border-bottom: 1px solid #fca5a5;
+  font-size: 13px;
+  font-weight: 600;
+  color: #7f1d1d;
+  padding: 10px 16px;
+  margin: 20px auto;
+}
+
+.djep-titlebarconfirm,
+.djep-titlebarmusicconfirm {
+  display: block;
+  width: 90%;
+  background: #f0fdf4;
+  border-top: 1px solid #86efac;
+  border-bottom: 1px solid #86efac;
+  font-size: 13px;
+  font-weight: 600;
+  color: #14532d;
+  padding: 10px 16px;
+  margin: 20px auto;
+}
+.djep-titlebarmusicconfirm { margin-bottom: -10px; }
+
+.djep-titlebarnotices {
+  display: block;
+  width: 90%;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  font-size: 13px;
+  font-weight: 600;
+  color: #78350f;
+  padding: 10px 16px;
+  margin: 20px auto;
+}
+
+.djep-titlebarlockout {
+  display: block;
+  width: 80%;
+  background: #dc2626;
+  border: 1px solid #991b1b;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  padding: 12px 16px;
+  margin: 0 auto;
+}
+
+/* ─── Status Row Highlights ─────────────────────────────────────────────────── */
+.djep-balanceduerow  { background: #fef9c3 !important; color: #92400e; font-weight: 600; text-transform: uppercase; }
+.djep-balancepaidrow { background: #f0fdf4 !important; color: #166534; font-weight: 600; text-transform: uppercase; }
+.djep-totalfeerow    { background: #eff6ff !important; color: #1e40af; font-weight: 600; text-transform: uppercase; }
+.djep-totaldepositrow{ background: #fef2f2 !important; color: #991b1b; font-weight: 600; text-transform: uppercase; }
+.djep-totalfeerow span { background: #eff6ff !important; color: #1e40af; font-weight: 600; text-transform: uppercase; }
+
+/* ─── Playlist Boxes ────────────────────────────────────────────────────────── */
+.djep-playlistbox,
+.djep-playlistboxmustplay,
+.djep-playlistboxdonotplay,
+.djep-playlistboxplayifposs,
+.djep-playlistboxdedications,
+.djep-playlistboxonlyrequest {
+  text-align: left;
+  border-radius: 4px;
+}
+
+.djep-playlistbox          { background: #f9f9f9; }
+.djep-playlistboxmustplay  { background: #f0fdf4; }
+.djep-playlistboxdonotplay { background: #fef2f2; }
+.djep-playlistboxplayifposs{ background: #fefce8; }
+.djep-playlistboxdedications{ background: #eff6ff; }
+.djep-playlistboxonlyrequest{ background: #faf5ff; }
+
+/* Playlist title strips */
+.djep-playlistboxmustplaytitle,
+.djep-playlistboxplayifposstitle,
+.djep-playlistboxdedicationstitle,
+.djep-playlistboxonlyrequesttitle,
+.djep-playlistboxdonotplaytitle {
+  height: 36px;
+  margin-top: 8px;
+  font-weight: 500;
+  font-size: 13px;
+  border: 1px solid #e5e5e5 !important;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+}
+
+.djep-playlistboxmustplaytitle    { background: #dcfce7; color: #14532d; }
+.djep-playlistboxplayifposstitle  { background: #fef9c3; color: #713f12; }
+.djep-playlistboxdedicationstitle { background: #dbeafe; color: #1e3a8a; }
+.djep-playlistboxonlyrequesttitle { background: #f3e8ff; color: #4a1d96; }
+.djep-playlistboxdonotplaytitle   { background: #fee2e2; color: #7f1d1d; }
+
+/* Custom playlist types */
+.djep-playlistboxcustomtype1 { background: #f0f9ff; text-align: left; }
+.djep-playlistboxcustomtype2 { background: #f0fdf4; text-align: left; }
+.djep-playlistboxcustomtype3 { background: #f0fdf4; text-align: left; }
+.djep-playlistboxcustomtype4 { background: #f5f5f5; text-align: left; }
+.djep-playlistboxcustomtype5 { background: #fdf6ec; text-align: left; }
+
+.djep-playlistboxcustomtype1title { background: #dbeafe; color: #1e3a8a; height: 36px; margin-top: 8px; font-weight: 500; border: 1px solid #e5e5e5 !important; display: flex; align-items: center; padding: 0 12px; }
+.djep-playlistboxcustomtype2title { background: #dcfce7; color: #14532d; height: 36px; margin-top: 8px; font-weight: 500; border: 1px solid #e5e5e5 !important; display: flex; align-items: center; padding: 0 12px; }
+.djep-playlistboxcustomtype3title { background: #fce7f3; color: #831843; height: 36px; margin-top: 8px; font-weight: 500; border: 1px solid #e5e5e5 !important; display: flex; align-items: center; padding: 0 12px; }
+.djep-playlistboxcustomtype4title { background: #ffedd5; color: #7c2d12; height: 36px; margin-top: 8px; font-weight: 500; border: 1px solid #e5e5e5 !important; display: flex; align-items: center; padding: 0 12px; }
+.djep-playlistboxcustomtype5title { background: #fef3c7; color: #78350f; height: 36px; margin-top: 8px; font-weight: 500; border: 1px solid #e5e5e5 !important; display: flex; align-items: center; padding: 0 12px; }
+
+/* Playlist helpers */
+.djep-playlisttitle   { position: relative; top: 9px; left: 25px; }
+.djep-playlistlimits  { padding-right: 5px; padding-top: 3px; font-size: 11px; float: right; font-weight: 400; color: #666; }
+.djep-playlistboxtext { font-size: 11px; text-align: left; }
+.djep-playlistcounterspan { float: right; padding-right: 3px; font-size: 11px; text-align: right; font-weight: 400; }
+.djep-musiccounterspan    { float: right; margin-top: -8px; font-size: 12px; }
+.djep-playlist_highlight_focus_in  { border: 1px solid #555; background: #fef9c3; }
+.djep-playlist_highlighter_focus_out { border: none; background: #fff; }
+
+/* ─── Special Songs ──────────────────────────────────────────────────────────── */
+.djep-specialtitle          { position: relative; top: 9px; left: 25px; }
+.djep-specialsongtitle      { background: #f5f5f5; height: 25px; border: 1px solid #e5e5e5; }
+.djep-specialsongcontent    { background: #fff; }
+.djep-specialdescription    { background: #fefce8; padding: 4px 4px 8px; color: #1a1a1a; }
+.djep-specialcloseicon      { font-size: 11px; width: 100%; text-align: right; }
+.djep-specialcloseicon a    { color: #dc2626; text-align: right; margin-right: 5px; }
+.djep-specialdescriptiontext{ padding: 0 20px 0 4px; margin-top: -10px; }
+
+.djep-special_song_header {
+  background: #f0f0f0;
+  height: 36px;
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid #e5e5e5 !important;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+}
+.djep-special_song_content_div { background: #fff; padding: 0 !important; }
+
+.djep-songrequesttotals {
+  display: block;
+  width: 95%;
+  background: #fefce8;
+  border: 1px solid #e5e5e5;
+  font-size: 12px;
+  color: #1a1a1a;
+  padding: 4px;
+  margin: 20px auto;
+}
+
+/* ─── Music Database ────────────────────────────────────────────────────────── */
+.djep-databaseheader      { background: #fff; padding: 4px; text-indent: 20px; font-weight: 600; font-size: 13px; color: #1a1a1a; }
+.djep-databasetableheader { background: #f0f0f0; font-weight: 600; font-size: 12px; color: #1a1a1a; }
+.djep-musicresultstable   { font-size: 11px !important; }
+.djep-databasebox         { border: 1px solid #e5e5e5; background: #fafafa; padding: 2px; font-size: 11px; color: #1a1a1a; }
+
+.djep-musicsearchform {
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  width: 350px;
+  height: 34px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #555;
+  text-indent: 10px;
+  outline: none;
+}
+.djep-musicsearchform:focus { border-color: #1a1a1a; }
+
+.djep-paginatebutton { border: 1px solid #ddd; cursor: pointer; margin: 0 2px; padding: 2px 8px; background: #f5f5f5; font-size: 12px; border-radius: 3px; }
+.djep-paginatebutton:hover { background: #e5e5e5; }
+.djep-activepaginatebutton { border: 1px solid #bbb; cursor: pointer; margin: 0 2px; padding: 2px 8px; background: #1a1a1a; color: #fff; font-weight: 600; font-size: 12px; border-radius: 3px; }
+
+/* ─── Buttons ───────────────────────────────────────────────────────────────── */
+.djep-planeventbutton,
+.djep-eventdetailsbutton,
+.djep-paymentbutton,
+.djep-readviewbutton,
+.djep-actionbutton,
+.djep-logoutbutton,
+.djep-searchbutton,
+.djep-clipboardbutton,
+.djep-songideabutton,
+.djep-guestsubmitrequests,
+.djep-guestlogout,
+.djep-guestsubmit,
+.djep-specialsongbutton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.12s, color 0.12s;
+  border: 1px solid transparent;
+  padding: 6px 16px;
+  white-space: nowrap;
+  user-select: none;
+}
+.djep-planeventbutton:active,
+.djep-eventdetailsbutton:active,
+.djep-paymentbutton:active,
+.djep-readviewbutton:active,
+.djep-actionbutton:active,
+.djep-logoutbutton:active,
+.djep-searchbutton:active,
+.djep-clipboardbutton:active,
+.djep-songideabutton:active,
+.djep-guestsubmitrequests:active,
+.djep-guestlogout:active,
+.djep-guestsubmit:active,
+.djep-specialsongbutton:active { transform: scale(0.97); }
+
+/* Filled – primary */
+.djep-planeventbutton   { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+.djep-planeventbutton:hover { background: #333; }
+
+/* Filled – muted */
+.djep-eventdetailsbutton,
+.djep-readviewbutton    { background: #f0f0f0; color: #1a1a1a; border-color: #e0e0e0; }
+.djep-eventdetailsbutton:hover,
+.djep-readviewbutton:hover { background: #e5e5e5; }
+
+/* Filled – accent */
+.djep-paymentbutton     { background: #4f46e5; color: #fff; border-color: #4f46e5; }
+.djep-paymentbutton:hover { background: #4338ca; }
+
+/* Dark */
+.djep-actionbutton,
+.djep-logoutbutton,
+.djep-searchbutton,
+.djep-guestsubmitrequests { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+.djep-actionbutton:hover,
+.djep-logoutbutton:hover,
+.djep-searchbutton:hover,
+.djep-guestsubmitrequests:hover { background: #333; }
+
+/* Ghost */
+.djep-clipboardbutton,
+.djep-songideabutton,
+.djep-specialsongbutton,
+.djep-guestlogout { background: transparent; color: #1a1a1a; border-color: #d4d4d4; }
+.djep-clipboardbutton:hover,
+.djep-songideabutton:hover,
+.djep-specialsongbutton:hover,
+.djep-guestlogout:hover { background: #f5f5f5; }
+
+/* Success */
+.djep-guestsubmit { background: #16a34a; color: #fff; border-color: #16a34a; font-size: 14px; padding: 8px 28px; }
+.djep-guestsubmit:hover { background: #15803d; }
+
+/* Toolbar button groups */
+.djep-toplistbuttons,
+.djep-toplistbuttons5 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  color: #1a1a1a;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  padding: 4px 12px;
+  height: 28px;
+  text-decoration: none;
+  transition: background 0.12s;
+}
+.djep-toplistbuttons  { width: 110px; }
+.djep-toplistbuttons:hover,
+.djep-toplistbuttons5:hover { background: #e5e5e5; }
+
+.djep-toplistbuttons2,
+.djep-toplistbuttons3,
+.djep-toplistbuttons4 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  color: #555;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.12s;
+  height: 28px;
+  padding: 4px 0;
+}
+.djep-toplistbuttons2 { width: 59px; }
+.djep-toplistbuttons3 { width: 85px; font-family: inherit; height: 30px; }
+.djep-toplistbuttons4 { width: 56px; font-size: 10px; padding: 5px 0; }
+.djep-toplistbuttons2:hover,
+.djep-toplistbuttons3:hover,
+.djep-toplistbuttons4:hover { background: #e5e5e5; color: #1a1a1a; }
+
+.djep-toplistbuttons2_active,
+.djep-toplistbuttons3_active,
+.djep-toplistbuttons4_active {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid #bbb;
+  color: #1a1a1a;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+}
+.djep-toplistbuttons2_active { width: 59px; height: 28px; font-size: 11px; }
+.djep-toplistbuttons3_active { width: 85px; height: 30px; font-size: 11px; font-family: inherit; }
+.djep-toplistbuttons4_active { width: 56px; font-size: 10px; padding: 5px 0; }
+
+.djep-artistsongbuttons,
+.djep-artistsongbuttonswide {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  color: #1a1a1a;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  text-align: center;
+  height: 28px;
+  opacity: 0.45;
+  transition: opacity 0.12s;
+}
+.djep-artistsongbuttons      { width: 28px; }
+.djep-artistsongbuttonswide  { width: 60px; }
+.djep-artistsongbuttons:hover,
+.djep-artistsongbuttonswide:hover { opacity: 1; }
+
+/* ─── Tables ────────────────────────────────────────────────────────────────── */
+tr { vertical-align: middle; }
+.djep-odd             { background: #f9f9f9; }
+.djep-even            { background: #fff; }
+.djep-table-headers   { background: #f0f0f0; }
+.djep-sectiontitle    { background: #f0f0f0; height: 25px; }
+.djep-tablehover      { background: #e8f4fb; }
+.djep-tablehover1     { background: #f5f5f5; }
+.djep-tablehover2     { background: transparent; }
+
+tr[id*="song_row_for_songid"] > td { padding: 0 3px !important; }
+tr[id*="draggable_"]              { cursor: grab !important; }
+.djep-musicresultrow:hover,
+.djep-musicresultrowmobile:hover  { background: #e8f4fb; }
+
+.djep-musicresultrow td:nth-child(1) { width: 20px; font-size: 11px !important; }
+.djep-musicresultrow td:nth-child(2),
+.djep-musicresultrow td:nth-child(3) { width: 165px; font-size: 11px !important; padding-left: 2px; }
+.djep-musicresultrow td:nth-child(4),
+.djep-musicresultrow td:nth-child(5) { width: 55px; text-align: center; }
+
+/* ─── Service Detail ────────────────────────────────────────────────────────── */
+.djep-service-desc-div      { border: 1px solid #e0e0e0; }
+.djep-service-desc-topcell  { border: 1px solid #e0e0e0; border-bottom: none; }
+.djep-service-desc-bottomcell{ border: 1px solid #e0e0e0; border-top: none; }
+.djep-servicedetailsfieldset{ border: 1px solid #e0e0e0; border-radius: 4px; margin-bottom: 12px; }
+.djep-servicedetailslegend  { font-size: 13px; font-weight: 500; }
+
+/* ─── Forms ─────────────────────────────────────────────────────────────────── */
+#djep-form-div    { background: #fafafa; padding: 16px; }
+#djep-wrapper     { margin: 12px auto; width: 500px; }
+
+input.djep-input,
+select.djep-select,
+textarea.djep-textarea {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 400;
+  font-style: normal;
+  vertical-align: middle;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  background: #fff;
+  color: #1a1a1a;
+  padding: 6px 8px;
+  outline: none;
+  transition: border-color 0.12s;
+}
+input.djep-input:focus,
+select.djep-select:focus,
+textarea.djep-textarea:focus { border-color: #1a1a1a; }
+
+input.djep-widgetaction {
+  padding: 8px;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 12px;
+  background: #f5f5f5;
+  width: 80%;
+}
+
+textarea.djep-textarea  { padding: 8px; width: 90%; }
+.djep-textarea_notes    { width: 95%; max-width: 400px; height: 195px; line-height: 1.5; }
+.djep-textarea_todo     { width: 95%; max-width: 400px; height: 70px; line-height: 1.5; }
+
+.djep-form label        { margin-left: 8px; font-size: 13px; color: #555; padding: 6px 12px; }
+.djep-submit input      { width: auto; padding: 7px 16px; background: #1a1a1a; font-size: 13px; color: #fff; cursor: pointer; border: none; border-radius: 4px; }
+
+select.djep-printbox    { max-width: 280px; height: 28px; font-size: 13px; }
+#djep-printhelper       { padding-right: 10px; width: 100%; height: 40px; text-align: right; }
+#print_helper           { float: right; padding: 0; }
+
+/* Music nav tabs */
+.djep-music_selections_navigation {
+  width: 280px;
+  margin: 2px auto 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  height: 36px;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+}
+.djep-music_selections_navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 4px;
+  padding: 2px 4px;
+}
+.djep-music_selections_navigation li {
+  border-radius: 3px;
+  text-align: center;
+  width: 128px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.djep-music_selections_navigation li a { text-decoration: none; color: inherit; font-size: 12px; }
+.djep-music_selections_navigation-li         { background: transparent; color: #777; cursor: pointer; }
+.djep-music_selections_navigation-li:hover   { background: #ebebeb; color: #555; }
+.djep-music_selections_navigation-active     { background: #fff; color: #1a1a1a; font-weight: 500; border: 1px solid #d4d4d4; cursor: pointer; }
+.djep-music_selections_navigation-active:hover { background: #f9f9f9; }
+
+/* Song request UI */
+.djep-requestonlytitle {
+  font-size: 12px;
+  color: #555;
+  text-align: center;
+  width: 280px;
+  margin: 2px auto 0;
+  border: 1px solid #e0e0e0;
+  background: #f5f5f5;
+  border-radius: 4px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.djep-requestonlytitle > p { margin: 0; }
+
+.djep-songideasdropdown,
+.djep-songgenresdropdown {
+  background: #fff;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  display: inline-block;
+  color: #555;
+  font-weight: 600;
+  height: 36px;
+  padding: 4px 8px;
+  width: 90%;
+  font-size: 14px;
+}
+
+.djep-requestlimitbox {
+  margin: 10px auto;
+  color: #1a1a1a;
+  width: 90%;
+}
+.djep-requestlimittitle {
+  display: block;
+  width: 90%;
+  background: #fafafa;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  font-weight: 600;
+  font-size: 13px;
+  color: #1a1a1a;
+  margin: 2px auto;
+  padding: 10px 16px;
+}
+
+.djep-songideaerror {
+  border: 1px solid #fde68a;
+  background: #fefce8;
+  padding: 12px 0;
+  margin: 10px auto;
+  border-radius: 4px;
+  color: #1a1a1a;
+}
+
+/* ─── Timeline ──────────────────────────────────────────────────────────────── */
+textarea#djep-timelineheadline {
+  font-family: inherit;
+  font-size: 16px;
+  text-align: center;
+  height: 75px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.djep-timelinetable { padding: 2px; border-spacing: 0; border: 0; }
+.djep-timelinetable tr { background: #fff; }
+.djep-timelinetable tr:hover { background: #f5f5f5; }
+
+.djep-timelinetextbox1 { color: #555; width: 95%; }
+.djep-timelinetextbox1:hover { background: #f0fdf4; }
+.djep-timelinetextbox2 { color: #555; width: 90%; }
+.djep-timelinetextbox2:hover,
+.djep-timelinetextbox3:hover { background: #eff6ff; }
+.djep-timelinetextbox3 { color: #555; width: 90%; }
+
+.djep-timelineitems {
+  display: inline-block;
+  background: #fff;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  color: #555;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 4px 8px;
+  text-decoration: none;
+  width: 220px;
+  text-align: left;
+  cursor: grab;
+}
+.djep-timelineitems:hover { background: #f5f5f5; }
+
+/* Mobile timeline */
+.djepm-timelinemobilepanel  { border: 1px solid #e0e0e0; border-radius: 4px; background: #f5f5f5; margin: 15px 0; }
+.djepm-timelinemobileheader { padding: 6px 8px; background: #e0e0e0; }
+.djepm-timelinemobilebody   { padding: 6px 8px; }
+.djepm-timelinemobilerow    { margin: 10px 0; }
+.djepm-timeline-select-fixed{ position: fixed; top: 0; background: #fff; border-bottom: 1px solid #e0e0e0; padding: 12px 0 8px; z-index: 9999; }
+
+/* ─── Accordion ─────────────────────────────────────────────────────────────── */
+#djep-accordianwrapper    { width: 95%; margin: 0 auto; height: auto; }
+.djep-accordianbuttonimage      { float: left; padding-right: 12px; padding-left: 4px; }
+.djep-accordianbuttonimageright { float: right; padding-right: 12px; padding-left: 4px; }
+.djep-accordionContent {
+  width: 95%;
+  float: left;
+  background: transparent !important;
+  display: none;
+  padding: 8px 6px 24px;
+  margin-top: -8px;
+}
+.djep-accordionButton {
+  width: 95%;
+  float: left;
+  margin: 6px 0;
+  padding: 8px 10px;
+  background: #fafafa;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.djep-accordionButton:hover { background: #f0f0f0; }
+
+/* ─── Calendar icon ─────────────────────────────────────────────────────────── */
+.calendar {
+  width: 64px;
+  font-size: 12px;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  overflow: hidden;
+}
+.calendar > span     { display: block; }
+.calendar > .month   { text-align: center; padding: 3px 0; font-size: 10px; background: #1a1a1a; color: #fff; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+.calendar > .day     { text-align: center; font-weight: 700; font-size: 24px; line-height: 1.1; padding: 4px 0 2px; }
+.calendar > .year    { text-align: center; color: #999; font-size: 9px; padding-bottom: 4px; }
+
+/* ─── Guest request ─────────────────────────────────────────────────────────── */
+#guest_request_container table tr { cursor: pointer; }
+.djep-playlistboxguests {
+  width: 90%;
+  min-height: 250px;
+  overflow: auto;
+  position: relative;
+  border: 1.5px dashed #d4d4d4;
+  border-radius: 4px;
+  padding-top: 4px;
+}
+.djep-guestrequestlink     { color: #dc2626; }
+.djep-guestrequestpassword { color: #dc2626; }
+
+/* ─── Progress bar ──────────────────────────────────────────────────────────── */
+#djep-progressbartitle,
+#djep-donesavingtext {
+  font-size: 20px;
+  color: #15803d;
+  text-align: center;
+  font-family: inherit;
+  padding: 20px 0 4px;
+}
+#djep-donesavingtext { height: 100px; }
+#progressbar { width: 550px; margin: 20px auto; }
+
+/* ─── Misc helpers ──────────────────────────────────────────────────────────── */
+.djep-cleared     { display: block; clear: both; float: none; margin: 5px 0 0; padding: 5px 0 0; border: none; font-size: 0; height: 0; overflow: hidden; }
+.djep-faqcleared  { display: block; clear: both; float: none; margin: 22px 0 0; padding: 22px 0 0; border: none; font-size: 0; height: 0; overflow: hidden; }
+.djep-othereventcontainer  { text-align: right; }
+.djep-cursorpointer        { cursor: pointer; }
+.djep-pointerforce         { cursor: pointer; }
+.djep-opaque               { opacity: 1; }
+.djep-opaque:hover         { opacity: 0.4; }
+.djep-opaque:active        { opacity: 0.7; }
+.djep-changebutton         { float: right; padding: 0 30px; }
+.djep-form-sections        { background: #f0f0f0; }
+.djep-service-desc-div     { border: 1px solid #e0e0e0; }
+#djep-contactbox           { font-size: 12px; background: #fafafa; padding: 14px 10px; width: 95%; }
+.djep-profilepicture       { margin: 0 auto 20px; width: 95%; }
+
+/* e-signed badge */
+.djep-esigned {
+  display: inline-block;
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  color: #1a1a1a;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 8px 0 0 5px;
+  padding: 5px 10px 5px 26px;
+  height: 24px;
+  line-height: 14px;
+  background-image: url(https://djep21.com/clients/images/padlock_closed.png);
+  background-size: 12px;
+  background-repeat: no-repeat;
+  background-position: 6px center;
+}
+
+/* ─── Mobile ────────────────────────────────────────────────────────────────── */
+.djepm-content           { margin: 10px !important; }
+.djepm-dropdownstyle     { background: #1a1a1a; }
+.djepm-form-sections     { padding: 10px 8px; font-size: 14px; margin: 20px 0 10px; }
+.djepm-planningformseditbox .questiontitle { font-size: 14px; margin-bottom: 5px; }
+.djepm-musicicondiv      { max-width: 900px; overflow-x: scroll; }
+.djepm-musicicondiv ul li{ float: left; margin-right: 10px; }
+.djepm-playlistboxtext,
+tr[id*="song_row_for_songid"] > td.djepm-playlistboxtext {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 3px 5px !important;
+}
+.djepm-toplistbuttons {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  color: #1a1a1a;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  width: 31%;
+  height: 28px;
+  padding-top: 6px;
+  margin-top: 3px;
+  text-decoration: none;
+}
+
+/* ─── Module boxes (uncomment block removed – add as needed) ─────────────────
+   All share the same base. Use a class on top of .djep-module if needed.       */
+.djep-eventlistbox, .djep-upcomingmeetingsbox, .djep-latestemailsbox,
+.djep-welcometextbox, .djep-contactdetailsbox, .djep-logindetailsbox,
+.djep-contactformbox, .djep-ourcontactinfobox, .djep-emailhistorybox,
+.djep-planneraccessbox, .djep-managemusicbox, .djep-planningformsbox,
+.djep-timelinebox, .djep-othertoolsbox, .djep-selectyourmusicbox,
+.djep-eventdatetimesbox, .djep-servicedetailsbox, .djep-eventdescriptionbox,
+.djep-venueinfobox, .djep-staffingbox, .djep-paymentsfinancesbox,
+.djep-feedetailsbox, .djep-paymenthistorybox, .djep-totalfeebox,
+.djep-otherfilesbox, .djep-documentsbox, .djep-relatedfilesbox,
+.djep-requestchangesbox, .djep-viewrequestboxes, .djep-guestrequestdescription,
+.djep-guestrequesthowitworksbox, .djep-guestrequestsettingsbox,
+.djep-emailmessagebox, .djep-makepaymentbox, .djep-viewdocumentbox,
+.djep-requestchangesformbox, .djep-planningformseditbox, .djep-weddingnamesbox,
+.djep-evaluationbox, .djep-printdocumentbox, .djep-planningformsviewbox,
+.djep-viewtimelinebox, .djep-edittimelinebox, .djep-viewweddingnamesbox,
+.djep-editweddingnamesbox {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  color: #1a1a1a;
+}
+
+.djep-latestemailsbox,
+.djep-upcomingmeetingsbox { width: 48%; float: left; margin: 5px; }
+
+/* Music icon nav */
+#djep-addsongimage a, #djep-musicrequestsimage a,
+#djep-specialsongsimage a, #djep-printrequestsimage a,
+#djep-guestrequestsimage a { height: 150px; width: 150px; display: inline-block; }
+#djep-addsongimage a      { background: url('../images/musicrequests_addsong.png'); }
+#djep-musicrequestsimage a { background: url('../images/musicrequests.png'); }
+#djep-specialsongsimage a { background: url('../images/musicrequests_special.png'); }
+#djep-printrequestsimage a { background: url('../images/musicrequests_print.png'); }
+#djep-guestrequestsimage a { background: url('../images/musicrequests_guests.png'); }
+
+/* ─── Tablet media queries ──────────────────────────────────────────────────── */
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) {
+  #djep-content {
+    width: 800px;
+    position: relative;
+    right: -69px;
+  }
+  #djep-navbar {
+    float: left;
+    width: 141px;
+    position: fixed;
+    margin-left: -3px;
+  }
+}
